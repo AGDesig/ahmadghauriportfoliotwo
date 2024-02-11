@@ -15,6 +15,11 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  // final ScrollController _controller = ScrollController();
+  final introKey = GlobalKey();
+  final aboutKey = GlobalKey();
+  final projectKey = GlobalKey();
+  final contactKey = GlobalKey();
   AppBarHeaders? _selectedMenu;
   @override
   Widget build(BuildContext context) {
@@ -34,11 +39,12 @@ class _HomeViewState extends State<HomeView> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width * .08),
             child: SingleChildScrollView(
+
               child: Column(
                 children: [
-                  IntroSegmentView(),
-                  AboutMeView(),
-                  ProjectView(),
+                  IntroSegmentView(key: introKey),
+                  AboutMeView(key: aboutKey),
+                  ProjectView(key: projectKey),
                 ],
               ),
             ),
@@ -58,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
 
 
   setHomeAction(){
-    var finalWidget = null;
+    var finalWidget;
       if(context.width < DeviceType.mobile.getMaxWidth()){
         finalWidget= [
           PopupMenuButton<AppBarHeaders>(
@@ -68,19 +74,26 @@ class _HomeViewState extends State<HomeView> {
               _selectedMenu = item;
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<AppBarHeaders>>[
-              const PopupMenuItem<AppBarHeaders>(
+               PopupMenuItem<AppBarHeaders>(
+                onTap: () => Scrollable.ensureVisible(introKey.currentContext!),
                 value: AppBarHeaders.home,
                 child: Text('Home'),
               ),
-              const PopupMenuItem<AppBarHeaders>(
+               PopupMenuItem<AppBarHeaders>(
+                onTap: () => Scrollable.ensureVisible(aboutKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                 value: AppBarHeaders.aboutMe,
                 child: Text('About me'),
               ),
-              const PopupMenuItem<AppBarHeaders>(
+               PopupMenuItem<AppBarHeaders>(
+                 onTap: () => Scrollable.ensureVisible(projectKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                 value: AppBarHeaders.projects,
                 child: Text('Projects'),
               ),
-              const PopupMenuItem<AppBarHeaders>(
+               PopupMenuItem<AppBarHeaders>(
+                 onTap: () => Scrollable.ensureVisible(contactKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                 value: AppBarHeaders.contact,
                 child: Text('Contacts'),
               ),
@@ -96,19 +109,26 @@ class _HomeViewState extends State<HomeView> {
               _selectedMenu = item;
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<AppBarHeaders>>[
-              const PopupMenuItem<AppBarHeaders>(
+              PopupMenuItem<AppBarHeaders>(
+                onTap: () => Scrollable.ensureVisible(introKey.currentContext!,duration: Duration(milliseconds: 500)),
                 value: AppBarHeaders.home,
                 child: Text('Home'),
               ),
-              const PopupMenuItem<AppBarHeaders>(
+              PopupMenuItem<AppBarHeaders>(
+                onTap: () => Scrollable.ensureVisible(aboutKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                 value: AppBarHeaders.aboutMe,
                 child: Text('About me'),
               ),
-              const PopupMenuItem<AppBarHeaders>(
+              PopupMenuItem<AppBarHeaders>(
+                onTap: () => Scrollable.ensureVisible(projectKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                 value: AppBarHeaders.projects,
                 child: Text('Projects'),
               ),
-              const PopupMenuItem<AppBarHeaders>(
+              PopupMenuItem<AppBarHeaders>(
+                onTap: () => Scrollable.ensureVisible(contactKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                 value: AppBarHeaders.contact,
                 child: Text('Contacts'),
               ),
@@ -120,67 +140,95 @@ class _HomeViewState extends State<HomeView> {
             Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: GestureDetector(
+                    onTap: () => Scrollable.ensureVisible(introKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                     child: Text("Home", style: AppStyles.s18AppBarActions))),
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
+                  onTap: () => Scrollable.ensureVisible(aboutKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                   child: Text("About me", style: AppStyles.s18AppBarActions)),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
+                  onTap: () => Scrollable.ensureVisible(projectKey.currentContext!,duration: Duration(milliseconds: 500)
+),
                   child: Text("Projects", style: AppStyles.s18AppBarActions)),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
+                  onTap: () => Scrollable.ensureVisible(contactKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+
                   child: Text("Contact", style: AppStyles.s18AppBarActions)),
             ),
           ];
       }
       else if(context.width< DeviceType.largeScreenDesktop.getMaxWidth()){
         finalWidget =[
-            Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: GestureDetector(
-                    child: Text("Home", style: AppStyles.s18AppBarActions))),
-            Padding(
+          Padding(
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
-                  child: Text("About me", style: AppStyles.s18AppBarActions)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: GestureDetector(
-                  child: Text("Projects", style: AppStyles.s18AppBarActions)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: GestureDetector(
-                  child: Text("Contact", style: AppStyles.s18AppBarActions)),
-            ),];
+                  onTap: () => Scrollable.ensureVisible(introKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+                  child: Text("Home", style: AppStyles.s18AppBarActions))),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+                onTap: () => Scrollable.ensureVisible(aboutKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+                child: Text("About me", style: AppStyles.s18AppBarActions)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+                onTap: () => Scrollable.ensureVisible(projectKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+                child: Text("Projects", style: AppStyles.s18AppBarActions)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+                onTap: () => Scrollable.ensureVisible(contactKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+
+                child: Text("Contact", style: AppStyles.s18AppBarActions)),
+          ),
+        ];
       }
       else if(context.width< DeviceType.extraLargeTV.getMaxWidth()){
         finalWidget = [
-            Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: GestureDetector(
-                    child: Text("Home", style: AppStyles.s18AppBarActions))),
-            Padding(
+          Padding(
               padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
-                  child: Text("About me", style: AppStyles.s18AppBarActions)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: GestureDetector(
-                  child: Text("Projects", style: AppStyles.s18AppBarActions)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: GestureDetector(
-                  child: Text("Contact", style: AppStyles.s18AppBarActions)),
-            ),
+                  onTap: () => Scrollable.ensureVisible(introKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+                  child: Text("Home", style: AppStyles.s18AppBarActions))),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+                onTap: () => Scrollable.ensureVisible(aboutKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+                child: Text("About me", style: AppStyles.s18AppBarActions)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+                onTap: () => Scrollable.ensureVisible(projectKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+                child: Text("Projects", style: AppStyles.s18AppBarActions)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+                onTap: () => Scrollable.ensureVisible(contactKey.currentContext!,duration: Duration(milliseconds: 500)
+),
+
+                child: Text("Contact", style: AppStyles.s18AppBarActions)),
+          ),
           ];
       }
       return finalWidget;

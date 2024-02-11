@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<HomeViewModel>(create: (context) => HomeViewModel()),],
+        ChangeNotifierProvider<HomeViewModel>(create: (context) => HomeViewModel(),),],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
    //     theme: CustomTheme.darkTheme(),
