@@ -1,6 +1,7 @@
 const _basePath = 'assets/images';
 const _covidTrackerApp_drivePath ='/project_image/covid_tracker_app/';
 const _jingleStreet_drivePath ='/project_image/jingle_street_app/';
+const _aiFood_drivePath ='/project_image/aifood_app/';
 const _lynx_drivePath ='/project_image/lynx_app/';
 const _shoppingStore_drivePath ='/project_image/shopping_store_app/';
 abstract class AppAssets {
@@ -16,7 +17,9 @@ abstract class AppAssets {
 
   //covidTrackerApp
   static const covidTrackerAppTitleAsset = "${_basePath+_covidTrackerApp_drivePath+"covid_project_title.png"}";
-  //------------------------------//
-  static const jingleStreetAppTitleAsset = "${_basePath+_covidTrackerApp_drivePath+"covid_project_title.png"}";
+  //jingleStreet
+  static const jingleStreetAppTitleAsset = "${_basePath+_jingleStreet_drivePath+"splash_screen.jpg"}";
+  //aifood
+  static const aiFoodAppTitleAsset = "${_basePath+_aiFood_drivePath+"splash_screen.jpg"}";
 
 }
